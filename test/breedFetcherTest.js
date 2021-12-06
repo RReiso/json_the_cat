@@ -1,5 +1,5 @@
 import { fetchBreedDescription } from '../breedFetcher.js';
-import { assert, expect } from 'chai';
+import { assert } from 'chai';
 
 describe('fetchBreedDescription', () => {
   it('returns a string description for a valid breed, via callback', (done) => {
@@ -16,16 +16,12 @@ describe('fetchBreedDescription', () => {
     });
   });
 
-  it('returns empty object when search does not bring any results', (done) => {
+  it('returns null object when search does not bring any results', (done) => {
     fetchBreedDescription('hghghf', (err, desc) => {
-      // we expect no error for this scenario
-      assert.equal(err, null);
-      
-      const expectedDesc = {};
-
-      // compare returned object
-      expect(expectedDesc).to.eql(desc)
-
+      // we expect error for this scenario
+      const expectedDesc = null;
+      assert.equal(expectedDesc, desc);
+      assert.equal("Nothing found!", err);
       done();
     });
   });

@@ -17,9 +17,8 @@ const checkArgs = (args)=>{
 // callback function to run after fetching data
 const printDescription = (error, desc) =>{
   if (error) {
-    console.log('Error fetch details:', error.message);
+    console.log('Error fetching details:', chalk.red(error));
   } else {
-    if (Object.keys(desc).length === 0) console.log(chalk.red("Nothing found!"))
     for (const cat in desc){
       console.log(`${chalk.yellow('Breed')}: ${chalk.blue(cat)}`);
       console.log(`${chalk.yellow('Description')}: ${desc[cat]}\n`);
